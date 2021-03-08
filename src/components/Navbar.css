@@ -1,10 +1,12 @@
 nav {
   padding: 0 15px;
+/*
   background: var(--tcam-blue);
+*/
 }
 
 .nav-item a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -59,14 +61,16 @@ nav {
 }
 
 #toggle-icon {
- color: white;
+ color: black;
 }
 
 .nav-item {
   order: 2;
   width: 100%;
   text-align: center;
+/*
   background: var(--tcam-blue);
+*/
   z-index: 1;
   display: none;
 }
@@ -87,11 +91,13 @@ nav {
 }
 
 .has-submenu > a::after {
+/*
   font-family: "Font Awesome 5 Free";
+*/
   font-size: 12px;
   line-height: 16px;
   font-weight: 900;
-  color: white;
+  color: black;
   padding-left: 5px;
 }
 
@@ -100,7 +106,9 @@ nav {
 }
 
 .submenu-active {
+/*
   background-color: var(--tcam-blue-dark);
+*/
   border-radius: 3px;
 }
 
@@ -130,7 +138,9 @@ nav {
     right: 0px;
     top: 48px;
     padding: 12px;
+/*
     background: var(--tcam-blue-dark);
+*/
   }
   
   .toggle {
