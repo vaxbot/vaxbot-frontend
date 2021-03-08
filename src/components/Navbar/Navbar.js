@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, withRouter } from "react-router-dom";
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -72,9 +73,9 @@ class Navbar extends Component {
     }
 
     render() {
-        //~ let url = new Url();
-        //~ let path = url.path.replace("/", "");
-        //~ let components = path.split("/");
+        // let url = new Url();
+        // let path = url.path.replace("/", "");
+        // let components = path.split("/");
 
         let toggle = (<li className="toggle"><a href="#"><FontAwesomeIcon id="toggle-icon" icon="bars"/></a></li>)
 
@@ -85,17 +86,17 @@ class Navbar extends Component {
         return (
             <nav className="navbar">
               <ul className="menu">
-                <li className="logo"><a href="/"><img src="/images/robot1.png" id="navlogo" alt="vaxbot" />vaxbot</a></li>
-                <li className="nav-item"><a href="/">About</a></li>
-                <li className="nav-item"><a href="/">For Developers</a></li>
-                //~ <li className="nav-item has-submenu">
-                  //~ <a tabIndex="0">About <FontAwesomeIcon icon="chevron-down"/></a>
-                  //~ <ul className="submenu">
-                    //~ <li className="subitem"><a href="/">Contact</a></li>
-                    //~ <li className="subitem"><a href="/">Profile</a></li>
-                    //~ <li className="subitem"><a href="/">Log Out</a></li>
-                  //~ </ul>
-                //~ </li>
+                <li className="logo"><Link to="/"><img src="/images/robot1.png" id="navlogo" alt="vaxbot" />vaxbot</Link></li>
+                <li className="nav-item"><Link to="/">About</Link></li>
+                <li className="nav-item"><Link to="/">For Developers</Link></li>
+                {/* <li className="nav-item has-submenu">
+                  // <a tabIndex="0">About <FontAwesomeIcon icon="chevron-down"/></a>
+                 // <ul className="submenu">
+                    // <li className="subitem"><a href="/">Contact</a></li>
+                    // <li className="subitem"><a href="/">Profile</a></li>
+                    // <li className="subitem"><a href="/">Log Out</a></li>
+                  // </ul>
+                // </li> */}
                 { toggle }
               </ul>
             </nav>
