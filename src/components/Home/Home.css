@@ -1,3 +1,7 @@
-#testID {
-    
+#home {
+    padding: 10%;
+}
+
+#home-update {
+    color: var(--robot-red);
 }

@@ -22,11 +22,9 @@ class Navbar extends Component {
         if (menu.classList.contains("active")){
             menu.classList.remove("active");
             this.setState({ menuActive: false });
-            //~ toggle.querySelector("a").innerHTML = "<FontAwesomeIcon id='toggle-icon' icon='bars'/>";
         } else {
             menu.classList.add("active");
             this.setState({ menuActive: true });
-            //~ toggle.querySelector("a").innerHTML = "<FontAwesomeIcon id='toggle-icon' icon='times'/>";
         }
     }
 
@@ -37,8 +35,6 @@ class Navbar extends Component {
         const items = document.querySelectorAll('.nav-item');
 
         // event handlers
-
-
         function toggleItem() {
             if (this.classList.contains("submenu-active")) {
             this.classList.remove("submenu-active");
@@ -61,7 +57,6 @@ class Navbar extends Component {
 
         // event listeners
         toggle.addEventListener('click', this.toggleMenu, false);
-
         document.addEventListener('click', closeSubmenu, false);
 
         for (let item of items){
@@ -73,9 +68,6 @@ class Navbar extends Component {
     }
 
     render() {
-        // let url = new Url();
-        // let path = url.path.replace("/", "");
-        // let components = path.split("/");
 
         let toggle = (<li className="toggle"><a href="#"><FontAwesomeIcon id="toggle-icon" icon="bars"/></a></li>)
 
