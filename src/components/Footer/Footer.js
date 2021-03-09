@@ -9,7 +9,7 @@ function Footer() {
         <ul className="footer-list">
           <li className="footer-list-item">Copyright &copy; vaxbot 2021</li>
           <li className="footer-list-item">
-            <Link to="/">Disclaimer</Link>
+            <Link to="/disclaimer">Disclaimer</Link>
           </li>
         </ul>
       </footer>

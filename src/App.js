@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/Home/Home";
+import Disclaimer from "./components/Disclaimer/Disclaimer";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +17,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={() => <Home />} />
+          <Route path="/disclaimer" exact component={() => <Disclaimer />} />
         </Switch>
         <Footer />
       </Router>
