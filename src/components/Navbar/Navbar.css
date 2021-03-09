@@ -1,8 +1,6 @@
 nav {
   padding: 0 15px;
-/*
-  background: var(--tcam-blue);
-*/
+  background: var(--alice-blue);
 }
 
 .nav-item a {
@@ -15,16 +13,38 @@ nav {
   list-style-type: none;
 }
 
+#logo-container {
+  display: flex;
+  align-items: center;
+}
+
 .logo {
   font-size: 20px;
   padding: 7.5px 10px 7.5px 0;
 }
 
+.logo a, .logo a:hover, .logo a:visited, .logo a:link, .logo a:active {
+
+    text-decoration: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    border:0!important;
+}
+
 #navlogo {
-    height: 20px;
+    height: 90px;
+}
+
+#logo-text {
+  font-family: 'Lobster', cursive;
+  font-size: 56px;
+  color: var(--smokey-black);
+  text-decoration: none !important;
+  
 }
 
 .nav-item {
+  color: var(--smokey-black);
   padding: 10px;
 }
 

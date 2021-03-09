@@ -1,3 +1,11 @@
+*{
+    --robot-red: #EC1B23;
+    --alice-blue: #DDF0FF;
+    --gold-crayola: #E5C687;
+    --black-coral: #60656F;
+    --smokey-black: #131112;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

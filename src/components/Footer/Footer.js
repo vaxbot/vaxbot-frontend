@@ -1,14 +1,17 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import "./Footer.css";
 
 function Footer() {
   return (
-    <div className="footer">
-      <footer class="py-5 bg-dark fixed-bottom">
-        <div class="container">
-          <p class="m-0 text-center text-white">
-            Copyright &copy; Your Website 2020
-          </p>
-        </div>
+    <div id="footer">
+      <footer>
+        <ul className="footer-list">
+          <li className="footer-list-item">Copyright &copy; vaxbot 2021</li>
+          <li className="footer-list-item">
+            <Link to="/">Disclaimer</Link>
+          </li>
+        </ul>
       </footer>
     </div>
   );

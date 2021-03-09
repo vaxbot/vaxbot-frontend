@@ -1,0 +1,18 @@
+#footer {
+    height:120px;
+    background: var(--black-coral);
+    color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+}
+
+.footer-list {
+    list-style: none;
+}
+
+.footer-list-item a {
+    color: white;
+}

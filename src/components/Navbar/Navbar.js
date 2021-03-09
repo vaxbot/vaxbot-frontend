@@ -86,9 +86,14 @@ class Navbar extends Component {
         return (
             <nav className="navbar">
               <ul className="menu">
-                <li className="logo"><Link to="/"><img src="/images/robot1.png" id="navlogo" alt="vaxbot" />vaxbot</Link></li>
+                <li className="logo"><Link to="/">
+                    <div id="logo-container">
+                        <img src="/images/robot1.png" id="navlogo" alt="vaxbot" />
+                        <div id="logo-text">vaxbot</div>
+                    </div>
+                </Link></li>
                 <li className="nav-item"><Link to="/">About</Link></li>
-                <li className="nav-item"><Link to="/">For Developers</Link></li>
+                {/*<li className="nav-item"><Link to="/">For Developers</Link></li>*/}
                 {/* <li className="nav-item has-submenu">
                   // <a tabIndex="0">About <FontAwesomeIcon icon="chevron-down"/></a>
                  // <ul className="submenu">
