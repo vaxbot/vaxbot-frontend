@@ -66,11 +66,31 @@ class Home extends Component {
         this.setState({show_unavailable: event.target.checked})
       }
       
+      // Assemble our provider cards
+      let provider_cards = [];
+      if(this.state.providers.length > 0){
+        for(let provider of this.state.providers) {
+            provider_cards.push(<Provider
+                id = { provider._id }
+                name = { provider.name }
+                address1 = { provider.address1 }
+                city= { provider.city }
+                state= { provider.state }
+                zip = { provider.zip }
+                dates = { provider.dates }
+                vaccine_tags = { provider.vaccine_tags }
+                tags = { provider.tags }
+                url = { provider.contact_url ? provider.contact_url : provider.source_url }
+                visible = { provider.vaccine_available || this.state.show_unavailable}
+                vaccine_available = { provider.vaccine_available }
+            />)
+        }
+      }
+      
       return (
         <div id="home">
           
           <div id="home-intro">
-            <div>{ "some things: " + String(this.state.show_unavailable) }</div>
             <p>Banh mi dreamcatcher ennui pabst paleo photo booth, cray you probably haven't heard of them marfa seitan yuccie humblebrag coloring book.</p>
             <p>Vegan jean shorts meditation four dollar toast post-ironic scenester, neutra mumblecore cold-pressed live-edge.</p>
           </div>
@@ -92,7 +112,7 @@ class Home extends Component {
               </label>
             </div>
           </div>
-          < Provider />
+          { provider_cards }
         </div>
       )
     }

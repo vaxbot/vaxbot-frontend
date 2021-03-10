@@ -3,6 +3,7 @@
     background: var(--black-coral);
     color: white;
     padding: 20px;
+    flex-shrink: 0;
 }
 
 .footer-list {
