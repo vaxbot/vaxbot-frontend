@@ -84,7 +84,7 @@ class Navbar extends Component {
                         <div id="logo-text">vaxbot</div>
                     </div>
                 </Link></li>
-                <li className="nav-item"><Link to="/">About</Link></li>
+                <li className="nav-item"><Link to="/about">About</Link></li>
                 {/*<li className="nav-item"><Link to="/">For Developers</Link></li>*/}
                 {/* <li className="nav-item has-submenu">
                   // <a tabIndex="0">About <FontAwesomeIcon icon="chevron-down"/></a>

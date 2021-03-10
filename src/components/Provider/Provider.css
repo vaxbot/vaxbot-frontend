@@ -1,0 +1,29 @@
+.provider {
+    border: solid 3px black
+}
+ 
+.provider-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.provider-item.button-link {
+    grid-row-end: span 2;
+}
+
+.provider-item.address1 {
+
+}
+
+.provider-item.city-state {
+
+}
+
+.provider-item.tags {
+
+}
+
+.provider-item.available-info {
+    grid-row-end: span 2;
+}
