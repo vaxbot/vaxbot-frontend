@@ -1,7 +1,12 @@
 #home {
-    padding: 10%;
+
 }
 
 #home-update {
-    color: var(--robot-red);
+    color: var(--smokey-black);
+    background: var(--gold-crayola);
+    font-size: small;
+    padding: 3px 24px;
+    opacity: 0.9;
+
 }
