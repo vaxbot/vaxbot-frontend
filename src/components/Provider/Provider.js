@@ -26,13 +26,25 @@ class Provider extends Component {
     }
     
     render() {
+        
+        let tags = [];
+        if(this.props.vaccine_tags){
+            for(let tag of this.props.vaccine_tags){
+                tags.push(<span className="item-tag">{tag}</span>)
+            }
+        }
+        if(this.props.tags){
+            for(let tag of this.props.tags){
+                tags.push(<span className="item-tag">{tag}</span>)
+            }
+        }
      
         return(
             <div id="123" className={ this.props.visible ? "provider provider-container" : "provider provider-container hidden"}>
                 <div className="provider-item name">{this.props.name}</div>
                 <div className="provider-item address1">{ this.props.address1 }</div>
                 <div className="provider-item city-state">{ this.props.city }, { this.props.state }</div>
-                <div className="provider-item tags">{ this.props.vaccine_tags }, { this.props.tags }</div>
+                <div className="provider-item tags-container">{ tags }</div>
                 <div className="provider-item button-link">
                     <a href={ this.props.url }>
                         <span className="button-link-label">GO TO SITE</span>

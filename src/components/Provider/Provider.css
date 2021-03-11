@@ -15,7 +15,7 @@
 .provider-item.button-link {
     text-align: center;
     color: white;
-    background: var(--gold-crayola);
+    background: var(--dark-purple);
     width: 100%;
     margin: 0 auto;
     padding: 4px;
@@ -36,7 +36,7 @@
 }
 
 .provider-item.name {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 .provider-item.address1 {
@@ -47,8 +47,19 @@
     font-size: 0.8em;
 }
 
-.provider-item.tags {
+.provider-item.tags-container {
 
+}
+
+.item-tag {
+    font-size: 0.8em;
+    color: var(--dark-purple);
+    border: 1.5px solid var(--dark-purple);
+    border-radius: 36px;
+    padding: 4px;
+    margin-right: 6px;
+    
+    
 }
 
 .provider-item.available-info {
