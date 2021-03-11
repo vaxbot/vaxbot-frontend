@@ -8,25 +8,24 @@
     font-size: small;
     padding: 3px 24px;
     opacity: 0.9;
+    margin: 8px 0px 8px
 
 }
 
 #providers-meta {
-    border: 1px solid black;
+    border: 1.5px solid var(--black-coral);
+    margin: 32px 0px 62px;
+    padding: 16px;
+    text-align: center;
 }
 
 .meta-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr));
 }
 
 .meta-item {
 
-}
-
-.item-long {
-    grid-column-end: span 2;
 }
 
 .slider-text {

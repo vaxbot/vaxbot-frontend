@@ -15,12 +15,30 @@ class Home extends Component {
             show_unavailable: false,
         }
         this.addProviders = this.addProviders.bind(this);
+        this.diffDateStingFromNow = this.diffDateStringFromNow.bind(this)
     }
     
     addProviders(arr) {
         console.log(arr[1]);
         const new_list = this.state.providers.concat(arr);
         this.setState({providers: new_list})
+    }
+    
+    diffDateStringFromNow(date) {
+      const diff_time = Math.abs(date - Date.now());
+      const diff_days = Math.floor(diff_time / (1000 * 60 * 60 * 24))
+      const diff_hours = Math.floor(diff_time / (1000 * 60 * 60))
+      const diff_minutes = Math.floor(diff_time / (1000 * 60))
+      
+      if(diff_days > 0) {
+          return `${diff_days} days`
+      } else if (diff_hours > 0) {
+          return `${diff_hours} hours`
+      } else if(diff_minutes > 0) {
+          return `${diff_minutes} minutes`
+      } else {
+          return `< 1 minute`
+      }
     }
     
     componentDidMount(){
@@ -48,7 +66,8 @@ class Home extends Component {
           }
         })
         let datetime = new Date(sorted[0].updatedAt)
-        last_updated = datetime.toLocaleString()
+        let diff = this.diffDateStringFromNow(datetime)
+        last_updated = `${diff} ago`
       } else {
           last_updated =  null;
       }
@@ -100,11 +119,13 @@ class Home extends Component {
               our scans cover a limited range of locations in the St. Louis region.
             </p>
           </div>
-          <div id="providers-meta" className="meta-container">
-            <div className="meta-item" >Updated At: { last_updated } </div>
-            <div className="meta-item">Locations Checked: { this.state.providers.length }</div>
-            <div className="meta-item item-long">Vaxbot found { providers_available.length } Locations with availability</div>
-            <div className="meta-item item-long">
+          <div id="providers-meta">
+            <div className="meta-container">
+              <div className="meta-item" >Updated: { last_updated } </div>
+              <div className="meta-item">Locations Checked: { this.state.providers.length }</div>
+            </div>
+            <div className="">Vaxbot found { providers_available.length } Locations with availability</div>
+            <div className="">
               <div className="slider-text">Show Unavailable</div>
               <label class="switch">
                 <input onChange={ handleSliderChange } type="checkbox" />
@@ -112,7 +133,9 @@ class Home extends Component {
               </label>
             </div>
           </div>
-          { provider_cards }
+          <div className= "provider-cards-wrapper">
+            { provider_cards }
+          </div>
         </div>
       )
     }
