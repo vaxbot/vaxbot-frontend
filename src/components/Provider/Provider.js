@@ -90,12 +90,16 @@ class Provider extends Component {
         
         return(
             <div id="123" className={ this.props.visible ? "provider provider-container" : "provider provider-container hidden"}>
-                <div className="provider-item name">{this.props.name}</div>
-                <div className="provider-item address1">{ this.props.address1 }</div>
-                <div className="provider-item city-state">{ this.props.city }, { this.props.state }</div>
-                <div className="provider-item tags-container">{ tags }</div>
-                { link_button }
-                <div className="provider-item available-info">{ dates } </div>
+                <div className="provider-info-wrapper">
+                    <div className="provider-item name">{this.props.name}</div>
+                    <div className="provider-item address1">{ this.props.address1 }</div>
+                    <div className="provider-item city-state">{ this.props.city }, { this.props.state }</div>
+                    <div className="provider-item tags-container">{ tags }</div>
+                    <div className="provider-item available-info">{ dates } </div>
+                </div>
+                <div className="provider-button-wrapper">
+                    { link_button }
+                </div>
             </div>
         
         )

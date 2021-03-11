@@ -9,10 +9,14 @@
 }
  
 .provider-container {
-    display: grid;
+    display: flex;
+    flex-direction: column;
 }
 
 .provider-item.button-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     width: 100%;
     margin: 10px auto;
@@ -84,4 +88,26 @@
 
 .date-available-label {
     font-weight: bold;
+}
+
+@media (min-width: 600px) {
+    .provider-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .provider-info-wrapper {
+        flex-direction: column;
+    }
+    
+    .provider-button-wrapper {
+        margin-left: 40px;
+        width: 26%;
+    }
+    
+    .provider-item.button-link {
+        min-height: 40px;
+    }
+
 }
