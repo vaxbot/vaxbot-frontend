@@ -36,6 +36,7 @@
 
 #bmc-logo {
     height: 30px;
+    margin-bottom: -6px;
 }
 
 #show-unavailable {
