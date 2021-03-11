@@ -8,10 +8,10 @@ import Disclaimer from "./components/Disclaimer/Disclaimer";
 import "./App.css";
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faBars, faTimes, faCoffee, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faBars, faTimes, faTwitter)
+library.add(faBars, faTimes, faTwitter, faGithub, faCoffee, faEnvelope)
 
 function App() {
   return (

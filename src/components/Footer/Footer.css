@@ -1,15 +1,29 @@
 #footer {
-    height:120px;
     background: var(--black-coral);
     color: white;
     padding: 20px;
     flex-shrink: 0;
+    font-size: 0.8em;
 }
 
 .footer-list {
     list-style: none;
 }
 
+.footer-list-item {
+    margin: 5px 0px;
+}
+
 .footer-list-item a {
     color: white;
 }
+
+
+#github-icon {
+    margin-right: 5px;
+}
+
+#email-icon {
+    margin-right: 5px;
+}
+
