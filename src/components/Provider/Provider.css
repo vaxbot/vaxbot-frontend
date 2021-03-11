@@ -14,18 +14,32 @@
 
 .provider-item.button-link {
     text-align: center;
-    color: white;
-    background: var(--dark-purple);
     width: 100%;
-    margin: 0 auto;
+    margin: 10px auto;
     padding: 4px;
     box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
 }
 
+.provider-item.button-link.available {
+    background: var(--dark-purple);
+}
+
+.provider-item.button-link.unavailable {
+    background: var(--light-gray)
+}
+
 .provider-item.button-link span {
-    color: white;
     text-decoration: none !important;
 }
+
+.provider-item.button-link.available span {
+    color: white;
+}
+
+.provider-item.button-link.unavailable span {
+    color: var(--smokey-black)
+}
+
 
 .button-link a, .button-link a:hover, .button-link a:visited, .button-link a:link, .button-link a:active {
 
@@ -48,7 +62,7 @@
 }
 
 .provider-item.tags-container {
-
+    margin: 5px 0px;
 }
 
 .item-tag {
@@ -58,6 +72,7 @@
     border: 1.5px solid var(--dark-purple);
     border-radius: 36px;
     padding: 4px;
+    margin-bottom: 4px;
     margin-right: 6px;
     
     

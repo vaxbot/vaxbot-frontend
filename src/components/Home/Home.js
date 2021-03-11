@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import "./Home.css";
 import Provider from "../Provider/Provider";
-const sample_data = require("../../test/sample_data.js")
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const sample_data = require("../../test/sample_data.js");
+
 
 class Home extends Component {
 
@@ -50,6 +53,14 @@ class Home extends Component {
     }
     
     render() {
+      
+      const twitter_link = (<a className="twitter-link" href="https://twitter.com/vaxbot_stl">
+        <span className="twitter-link-text">@vaxbot_stl</span>
+      </a>)
+      
+      let bmc_link = (<a className="bmc-link" href="https://www.buymeacoffee.com/vaxbot">
+          <span>buy me a cofee</span>
+        </a>)
       
       // Get Most Recently Updated Timestamp from data array
       let last_updated;
@@ -116,12 +127,17 @@ class Home extends Component {
         <div id="home">
           
           <div id="home-intro">
-            <p>Banh mi dreamcatcher ennui pabst paleo photo booth, cray you probably haven't heard of them marfa seitan yuccie humblebrag coloring book.</p>
-            <p>Vegan jean shorts meditation four dollar toast post-ironic scenester, neutra mumblecore cold-pressed live-edge.</p>
+            <span>Vaxbot scans pharmacies as well as state and national resources to help you find available COVID-19 vaccinations in your area.</span>
+            <br />
+            <br/>
+            <span>For real-time notifications of new availablity, follow us on Twitter ({ twitter_link }).</span>
+            <br/>
+            <br/>
+            <span>If you found this to be helpful, please consider donating at { bmc_link }</span>
           </div>
           <div id="home-update">
             <p>
-              <b>Update (3/12):</b> vaxbot is currently in super-beta mode! We are working hard to add new vaccine providers in the coming weeks. Right now
+              <b>Update (3/12):</b> vaxbot is currently in beta mode! We are working hard to add new vaccine providers ASAP! Right now
               our scans cover a limited range of locations in the St. Louis region.
             </p>
           </div>
