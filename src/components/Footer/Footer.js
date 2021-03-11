@@ -13,7 +13,7 @@ function Footer() {
             <Link to="/disclaimer">Disclaimer</Link>
           </li>
           <li className="footer-list-item">
-            <a className="github" href="https://github.com/vaxbot">
+            <a className="github" target="_blank" rel="noopener noreferrer" href="https://github.com/vaxbot">
               <FontAwesomeIcon id="github-icon" icon={["fab", "github"]}/>
               <span>Github</span>
             </a>
