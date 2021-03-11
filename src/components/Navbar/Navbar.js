@@ -80,7 +80,7 @@ class Navbar extends Component {
               <ul className="menu">
                 <li className="logo"><Link to="/">
                     <div id="logo-container">
-                        <img src="/images/robot1.png" id="navlogo" alt="vaxbot" />
+                        <img src="/images/robot1.png" id="logo-image" alt="vaxbot" />
                         <div id="logo-text">vaxbot</div>
                     </div>
                 </Link></li>

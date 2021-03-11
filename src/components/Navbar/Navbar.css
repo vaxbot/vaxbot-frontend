@@ -31,13 +31,13 @@ nav {
     border:0!important;
 }
 
-#navlogo {
-    height: 90px;
+#logo-image {
+  height: 60px;
 }
 
 #logo-text {
   font-family: 'Lobster', cursive;
-  font-size: 56px;
+  font-size: 42px;
   color: var(--smokey-black);
   text-decoration: none !important;
   
@@ -171,4 +171,19 @@ nav {
     border-radius: 0;
   }
   
+}
+/*
+make logo larger if we arent on a really small display
+*/
+@media (min-width: 360px) {
+  #logo-image {
+      height: 90px;
+  }
+  
+  #logo-text {
+    font-family: 'Lobster', cursive;
+    font-size: 56px;
+    color: var(--smokey-black);
+    text-decoration: none !important;
+  }
 }
