@@ -55,11 +55,14 @@ class Home extends Component {
     render() {
       
       const twitter_link = (<a className="twitter-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/vaxbot_stl">
+        <FontAwesomeIcon id="twitter-icon" icon={["fab", "twitter"]}/>
         <span className="twitter-link-text">@vaxbot_stl</span>
       </a>)
       
       let bmc_link = (<a className="bmc-link" target="_blank" rel="noopener noreferrer" href="https://www.buymeacoffee.com/vaxbot">
-          <span>buy me a cofee</span>
+          <span>
+            <img src="/images/BMC-logo-wordmark-black.svg" id="bmc-logo" alt="buy me a coffee" />
+          </span>
         </a>)
       
       // Get Most Recently Updated Timestamp from data array
@@ -130,10 +133,10 @@ class Home extends Component {
             <span>Vaxbot scans pharmacies as well as state and national resources to help you find available COVID-19 vaccinations in your area.</span>
             <br />
             <br/>
-            <span>For real-time notifications of new availablity, follow us on Twitter ({ twitter_link }).</span>
+            <span>For real-time notifications of new availablity, follow us on Twitter { twitter_link }.</span>
             <br/>
             <br/>
-            <span>If you found this to be helpful, please consider donating at { bmc_link }</span>
+            <span>If you found this helpful, please consider donating: { bmc_link }</span>
           </div>
           <div id="home-update">
             <p>

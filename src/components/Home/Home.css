@@ -34,6 +34,10 @@
 
 }
 
+#bmc-logo {
+    height: 30px;
+}
+
 #show-unavailable {
     border: 2px solid var(--smokey-black);
     margin: 32px 0px 32px;
