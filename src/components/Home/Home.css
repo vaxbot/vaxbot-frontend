@@ -13,7 +13,7 @@
 }
 
 #providers-meta {
-    border: 1.5px solid var(--black-coral);
+    border: 2px solid var(--smokey-black);
     margin: 32px 0px 62px;
     padding: 16px;
     text-align: center;
@@ -21,11 +21,20 @@
 
 .meta-container {
     display: grid;
+/*
     grid-template-columns: repeat(2, 1fr));
+*/
 }
 
 .meta-item {
 
+}
+
+#show-unavailable {
+    border: 2px solid var(--smokey-black);
+    margin: 32px 0px 32px;
+    padding: 16px;
+    text-align: center;
 }
 
 .slider-text {
@@ -37,7 +46,8 @@
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
+    height: 32px;
+    margin-left: 10px;
 }
 
 /* Hide default HTML checkbox */

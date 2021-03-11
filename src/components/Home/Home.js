@@ -37,7 +37,7 @@ class Home extends Component {
       } else if(diff_minutes > 0) {
           return `${diff_minutes} minutes`
       } else {
-          return `< 1 minute`
+          return `a few seconds`
       }
     }
     
@@ -86,10 +86,11 @@ class Home extends Component {
       }
       
       // Assemble our provider cards
-      let provider_cards = [];
+      let provider_cards_available = [];
+      let provider_cards_unavailable = [];
       if(this.state.providers.length > 0){
         for(let provider of this.state.providers) {
-            provider_cards.push(<Provider
+            let card = <Provider
                 id = { provider._id }
                 name = { provider.name }
                 address1 = { provider.address1 }
@@ -102,7 +103,12 @@ class Home extends Component {
                 url = { provider.contact_url ? provider.contact_url : provider.source_url }
                 visible = { provider.vaccine_available || this.state.show_unavailable}
                 vaccine_available = { provider.vaccine_available }
-            />)
+            />
+            if (provider.vaccine_available) {
+              provider_cards_available.push(card);
+            } else if (!provider.vaccine_available) {
+              provider_cards_unavailable.push(card);
+            }
         }
       }
       
@@ -123,18 +129,21 @@ class Home extends Component {
             <div className="meta-container">
               <div className="meta-item" >Updated: { last_updated } </div>
               <div className="meta-item">Locations Checked: { this.state.providers.length }</div>
-            </div>
-            <div className="">Vaxbot found { providers_available.length } Locations with availability</div>
-            <div className="">
-              <div className="slider-text">Show Unavailable</div>
-              <label class="switch">
-                <input onChange={ handleSliderChange } type="checkbox" />
-                <span class="slider round"></span>
-              </label>
+              <div className="">Vaxbot found { providers_available.length } Locations with availability</div>
             </div>
           </div>
-          <div className= "provider-cards-wrapper">
-            { provider_cards }
+          <div className= "provider-cards-available-wrapper">
+            { provider_cards_available }
+          </div>
+          <div id="show-unavailable">
+            <div className="slider-text">Show Unavailable</div>
+            <label class="switch">
+              <input onChange={ handleSliderChange } type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div className= "provider-cards-unavailable-wrapper">
+            { provider_cards_unavailable }
           </div>
         </div>
       )

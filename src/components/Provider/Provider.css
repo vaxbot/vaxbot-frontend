@@ -10,20 +10,41 @@
  
 .provider-container {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 .provider-item.button-link {
-    grid-row-end: span 2;
+    text-align: center;
+    color: white;
+    background: var(--gold-crayola);
+    width: 100%;
+    margin: 0 auto;
+    padding: 4px;
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
+}
+
+.provider-item.button-link span {
+    color: white;
+    text-decoration: none !important;
+}
+
+.button-link a, .button-link a:hover, .button-link a:visited, .button-link a:link, .button-link a:active {
+
+    text-decoration: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    border:0!important;
+}
+
+.provider-item.name {
+    font-size: 1.2em;
 }
 
 .provider-item.address1 {
-
+    font-size: 0.8em;
 }
 
 .provider-item.city-state {
-
+    font-size: 0.8em;
 }
 
 .provider-item.tags {
@@ -31,5 +52,5 @@
 }
 
 .provider-item.available-info {
-    grid-row-end: span 2;
+
 }

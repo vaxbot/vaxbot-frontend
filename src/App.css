@@ -9,8 +9,10 @@
 
 .content {
   flex: 1 0 auto;
-  width: 80%;
+  width: 90%;
+  max-width: 860px;
   margin: 0 auto;
+  padding-bottom: 120px;
 }
 
 /*
