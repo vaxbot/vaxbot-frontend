@@ -54,11 +54,11 @@ class Home extends Component {
     
     render() {
       
-      const twitter_link = (<a className="twitter-link" href="https://twitter.com/vaxbot_stl">
+      const twitter_link = (<a className="twitter-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/vaxbot_stl">
         <span className="twitter-link-text">@vaxbot_stl</span>
       </a>)
       
-      let bmc_link = (<a className="bmc-link" href="https://www.buymeacoffee.com/vaxbot">
+      let bmc_link = (<a className="bmc-link" target="_blank" rel="noopener noreferrer" href="https://www.buymeacoffee.com/vaxbot">
           <span>buy me a cofee</span>
         </a>)
       
@@ -153,9 +153,9 @@ class Home extends Component {
           </div>
           <div id="show-unavailable">
             <div className="slider-text">Show Unavailable</div>
-            <label class="switch">
+            <label className="switch">
               <input onChange={ handleSliderChange } type="checkbox" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
           </div>
           <div className= "provider-cards-unavailable-wrapper">

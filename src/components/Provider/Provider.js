@@ -46,7 +46,7 @@ class Provider extends Component {
         if(this.props.vaccine_available) {
             link_button = (
                 <div className="provider-item button-link available">
-                    <a href={ this.props.url }>
+                    <a target="_blank" rel="noopener noreferrer" href={ this.props.url }>
                         <span className="button-link-label available">GO TO SITE</span>
                     </a>
                 </div>
@@ -54,13 +54,40 @@ class Provider extends Component {
         } else if(!this.props.vaccine_available) {
             link_button = (
                 <div className="provider-item button-link unavailable">
-                    <a href={ this.props.url }>
+                    <a target="_blank" rel="noopener noreferrer" href={ this.props.url }>
                         <span className="button-link-label unavailable">NOT AVAILABLE</span>
                     </a>
                 </div>
             )
         }
-     
+        
+        //generate formatted dates list
+        const months = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
+        let dates = [];
+        if(this.props.dates.length >0) {
+            let sorted = this.props.dates.slice()
+                sorted.sort((a, b) => {
+                    var dateA = new Date(a.updatedAt);
+                    var dateB = new Date(b.updatedAt);
+                    if(dateA > dateB){
+                    return -1
+                    }
+                    if(dateA < dateB) {
+                    return 1
+                    }
+                })
+            dates.push(<div className= "date-available date-available-label">Available:</div>)
+            for(let i=0; i<sorted.length; i++) {
+                if(i >=3) {
+                    dates.push(<div className="date-available date-available-meta"> and {sorted.length - i} more...</div>)
+                    break;
+                }
+                
+                let date = new Date(sorted[i]);
+                dates.push(<div className="date-available">{months[date.getMonth() - 1]} {date.getDate()}</div>);
+            }    
+        }
+        
         return(
             <div id="123" className={ this.props.visible ? "provider provider-container" : "provider provider-container hidden"}>
                 <div className="provider-item name">{this.props.name}</div>
@@ -68,7 +95,7 @@ class Provider extends Component {
                 <div className="provider-item city-state">{ this.props.city }, { this.props.state }</div>
                 <div className="provider-item tags-container">{ tags }</div>
                 { link_button }
-                <div className="provider-item available-info">Available: { this.props.dates }</div>
+                <div className="provider-item available-info">{ dates } </div>
             </div>
         
         )

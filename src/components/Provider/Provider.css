@@ -79,5 +79,9 @@
 }
 
 .provider-item.available-info {
+    font-size: 0.8em;
+}
 
+.date-available-label {
+    font-weight: bold;
 }
