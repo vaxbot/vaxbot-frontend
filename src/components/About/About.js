@@ -49,7 +49,7 @@ function About() {
 
       <h3>How can I contribute?</h3>
 
-      <p>You can help keep us going by donating at {bmc_link}</p>
+      <p>You can help keep vaxbot going by supporting us at {bmc_link}</p>
  
       <p>If you'd like to collaborate or contribute otherwise, please check our {github_link} repositories or email us at vaxbotstl@gmail.com</p>
     </div>

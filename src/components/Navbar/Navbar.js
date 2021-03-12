@@ -50,9 +50,9 @@ class Navbar extends Component {
         function closeSubmenu(e){
             let isClickInside = menu.contains(e.target);
           
-          if(!isClickInside && menu.querySelector('.submenu-active')) {
+            if(!isClickInside && menu.querySelector('.submenu-active')) {
             menu.querySelector('.submenu-active').classList.remove('submenu-active');
-          }
+            }
         }
 
         // event listeners

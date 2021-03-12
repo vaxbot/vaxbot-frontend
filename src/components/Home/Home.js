@@ -136,7 +136,7 @@ class Home extends Component {
             <span>For real-time notifications of new availablity, follow us on Twitter { twitter_link }.</span>
             <br/>
             <br/>
-            <span>Help us expand! Please donate at { bmc_link }</span>
+            <span>Help vax expand! Support us at { bmc_link }</span>
           </div>
           <div id="home-update">
             <p>
