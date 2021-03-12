@@ -82,11 +82,11 @@
     
 }
 
-.provider-item.available-info {
+.provider-item.dates-available {
     font-size: 0.8em;
 }
 
-.date-available-label {
+.dates-label {
     font-weight: bold;
 }
 

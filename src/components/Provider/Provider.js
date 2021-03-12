@@ -62,30 +62,34 @@ class Provider extends Component {
         }
         
         //generate formatted dates list
+        
         const months = ["Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
-        let dates = [];
+        let dates = "";
         if(this.props.dates.length >0) {
-            let sorted = this.props.dates.slice()
-                sorted.sort((a, b) => {
-                    var dateA = new Date(a.updatedAt);
-                    var dateB = new Date(b.updatedAt);
-                    if(dateA > dateB){
-                    return -1
-                    }
-                    if(dateA < dateB) {
-                    return 1
-                    }
-                })
-            dates.push(<div className= "date-available date-available-label">Available:</div>)
-            for(let i=0; i<sorted.length; i++) {
-                if(i >=3) {
-                    dates.push(<div className="date-available date-available-meta"> and {sorted.length - i} more...</div>)
-                    break;
+            let sorted = this.props.dates.slice();
+            sorted.sort((a, b) => {
+                let date_a = new Date(a);
+                let date_b = new Date(b);
+                if(date_a < date_b){
+                return -1
                 }
-                
-                let date = new Date(sorted[i]);
-                dates.push(<div className="date-available">{months[date.getMonth() - 1]} {date.getDate()}</div>);
-            }    
+                if(date_b > date_a) {
+                return 1
+                }
+            })
+            let first_date = new Date(sorted[0]);
+            let last_date = new Date(sorted.slice(-1));
+            let appt_or_event = "appointments";
+            if(this.props.tags.map(str => str.toLowerCase()).includes("event")) {
+                appt_or_event = "events";
+            }
+            if(first_date.getMonth() == last_date.getMonth() && first_date.getDate() == last_date.getDate()) {
+                dates = ( <div><span className="dates-label">{first_date.getMonth()}/{first_date.getDate()}:  </span>
+                            <span className="dates-count">{sorted.length} {appt_or_event}</span></div>);
+            } else {
+                dates = ( <div><span className="dates-label">{first_date.getMonth()}/{first_date.getDate()} - {last_date.getMonth()}/{last_date.getDate()}:  </span>
+                            <span className="dates-count">{sorted.length} {appt_or_event}</span></div>);
+            }
         }
         
         return(
@@ -95,7 +99,7 @@ class Provider extends Component {
                     <div className="provider-item address1">{ this.props.address1 }</div>
                     <div className="provider-item city-state">{ this.props.city }, { this.props.state }</div>
                     <div className="provider-item tags-container">{ tags }</div>
-                    <div className="provider-item available-info">{ dates } </div>
+                    <div className="provider-item dates-available">{ dates } </div>
                 </div>
                 <div className="provider-button-wrapper">
                     { link_button }
