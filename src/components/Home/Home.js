@@ -12,13 +12,34 @@ class Home extends Component {
         super(props);
         this.props = props;
         this.state = {
+            scanning_providers_count: 0,
+            total_providers_availability: 0,
             providers: [],
+            api_error: false,
             //~ last_updated: null,
             //~ available_count: 0,
             show_unavailable: false,
         }
         this.addProviders = this.addProviders.bind(this);
         this.diffDateStingFromNow = this.diffDateStringFromNow.bind(this)
+        this.fetchData = this.fetchData.bind(this)
+    }
+    
+    async fetchData (options = null) {
+      let query = "";
+      if(options){
+          query += "search?";
+          for(let option in options) {
+            query += `${option}=${options[option]}&`;
+          }
+          query = query.replace(/&$/ig, "");
+          console.log(query);
+      }
+      const base_url= "http://localhost:3300/v1/providers/"
+      await fetch(base_url + query)
+        .then(response => response.json())
+        .then(json => this.setState({providers: json}))
+      //~ this.setState({providers: data})
     }
     
     addProviders(arr) {
@@ -45,10 +66,12 @@ class Home extends Component {
     }
     
     componentDidMount(){
-        console.log(sample_data[0]);
-      
-        this.addProviders(sample_data);
-        console.log(this.state.providers[0]);
+        //~ send initial search
+        let options = {
+            vaccine_available: true,
+        }
+        this.fetchData(options);
+        //~ this.setState({providers: sample_data})
         
     }
     
@@ -66,6 +89,7 @@ class Home extends Component {
         </a>)
       
       // Get Most Recently Updated Timestamp from data array
+      //basic minim search would run in O(n) and be faster that sorting at O(nlogn)!!!
       let last_updated;
       if(this.state.providers.length > 0){
         let sorted = this.state.providers.slice()
@@ -86,15 +110,7 @@ class Home extends Component {
           last_updated =  null;
       }
       
-      // Get number of providers with availability
-      let providers_available;
-      if(this.state.providers.length > 0){
-        providers_available = this.state.providers.filter((provider) => provider.vaccine_available == true)
-      } else {
-        providers_available = "Zero";
-      }
-      
-      // Update show_unavailable on slider click
+      // Update state.show_unavailable on slider click
       const handleSliderChange = (event) =>  {
         this.setState({show_unavailable: event.target.checked})
       }
@@ -111,9 +127,10 @@ class Home extends Component {
                 city= { provider.city }
                 state= { provider.state }
                 zip = { provider.zip }
-                dates = { provider.dates }
-                vaccine_tags = { provider.vaccine_tags }
-                tags = { provider.tags }
+                phone = { provider.phone || null }
+                dates = { provider.dates || [] }
+                vaccine_tags = { provider.vaccine_tags || null }
+                tags = { provider.tags || null }
                 url = { provider.contact_url ? provider.contact_url : provider.source_url }
                 visible = { provider.vaccine_available || this.state.show_unavailable}
                 vaccine_available = { provider.vaccine_available }
@@ -147,8 +164,8 @@ class Home extends Component {
           <div id="providers-meta">
             <div className="meta-container">
               <div className="meta-item" >Updated: { last_updated } </div>
-              <div className="meta-item">Locations Checked: { this.state.providers.length }</div>
-              <div className="">Vaxbot found { providers_available.length } Locations with availability</div>
+              <div className="meta-item">Locations Checked: { this.state.scanning_providers_count }</div>
+              <div className="">Vaxbot found { this.state.total_providers_availability } Locations with availability</div>
             </div>
           </div>
           <div className= "provider-cards-available-wrapper">

@@ -80,9 +80,6 @@ class Provider extends Component {
             let first_date = new Date(sorted[0]);
             let last_date = new Date(sorted.slice(-1));
             let appt_or_event = "appointments";
-            if(this.props.tags.map(str => str.toLowerCase()).includes("event")) {
-                appt_or_event = "events";
-            }
             if(first_date.getMonth() == last_date.getMonth() && first_date.getDate() == last_date.getDate()) {
                 dates = ( <div><span className="dates-label">{first_date.getMonth()}/{first_date.getDate()}:  </span>
                             <span className="dates-count">{sorted.length} {appt_or_event}</span></div>);
