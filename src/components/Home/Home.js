@@ -116,8 +116,7 @@ class Home extends Component {
       }
       
       // Assemble our provider cards
-      let provider_cards_available = [];
-      let provider_cards_unavailable = [];
+      let provider_cards = [];
       if(this.state.providers.length > 0){
         for(let provider of this.state.providers) {
             let card = <Provider
@@ -135,11 +134,9 @@ class Home extends Component {
                 visible = { provider.vaccine_available || this.state.show_unavailable}
                 vaccine_available = { provider.vaccine_available }
             />
-            if (provider.vaccine_available) {
-              provider_cards_available.push(card);
-            } else if (!provider.vaccine_available) {
-              provider_cards_unavailable.push(card);
-            }
+
+            provider_cards.push(card);
+
         }
       }
       
@@ -168,18 +165,8 @@ class Home extends Component {
               <div className="">Vaxbot found { this.state.total_providers_availability } Locations with availability</div>
             </div>
           </div>
-          <div className= "provider-cards-available-wrapper">
-            { provider_cards_available }
-          </div>
-          <div id="show-unavailable">
-            <div className="slider-text">Show Unavailable</div>
-            <label className="switch">
-              <input onChange={ handleSliderChange } type="checkbox" />
-              <span className="slider round"></span>
-            </label>
-          </div>
-          <div className= "provider-cards-unavailable-wrapper">
-            { provider_cards_unavailable }
+          <div className= "provider-cards-wrapper">
+            { provider_cards }
           </div>
         </div>
       )
