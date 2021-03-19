@@ -10,6 +10,7 @@ class Provider extends Component {
     *   city= { provider.city }
     *   state= { provider.state }
     *   zip = { provider.zip }
+    *   distance = {provider.dist ? Number(provider.dist.calculated.toFixed(1)) : null}
     *   phone = { provider.phone || null }
     *   dates = { provider.dates }
     *   vaccine_tags = { provider.vaccine_tags }
@@ -41,6 +42,14 @@ class Provider extends Component {
             for(let tag of this.props.tags){
                 tags.push(<span className="item-tag">{tag}</span>)
             }
+        }
+        
+        // show distance from query
+        let distance = "";
+        if(this.props.distance) {
+            distance = (
+                <div className= "provider-item distance">{ this.props.distance } miles</div>
+            )
         }
         
         // generate available/unavailable link button
@@ -103,6 +112,7 @@ class Provider extends Component {
             <div id={ this.props.id } className="provider provider-container">
                 <div className="provider-info-wrapper">
                     <div className="provider-item name">{this.props.name}</div>
+                    {distance}
                     <div className="provider-item address1">{ this.props.address1 }</div>
                     <div className="provider-item city-state">{ this.props.city }, { this.props.state } { this.props.zip }</div>
                     <div className="provider-item phone">{ this.props.phone ? this.props.phone : "" }</div>

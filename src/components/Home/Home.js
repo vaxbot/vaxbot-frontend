@@ -121,7 +121,7 @@ class Home extends Component {
         
         //~ send initial search
         let options = {
-            vaccine_available: true,
+            vaccine_available: true, 
         }
         this.fetchData(options);
         //~ this.setState({providers: sample_data})
@@ -203,6 +203,7 @@ class Home extends Component {
                     city= { provider.city }
                     state= { provider.state }
                     zip = { provider.zip }
+                    distance = {provider.dist ? Number(provider.dist.calculated.toFixed(1)) : null}
                     phone = { provider.phone || null }
                     dates = { provider.dates || [] }
                     vaccine_tags = { provider.vaccine_tags || null }
