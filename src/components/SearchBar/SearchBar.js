@@ -9,7 +9,7 @@ class SearchBar extends Component {
         this.props = props;
         this.state = {
             distance: "any",
-            zip: "",
+            zip: null,
             show_unavailable: false,
             zip_error: false,
         }
@@ -57,16 +57,22 @@ class SearchBar extends Component {
             options["radius"] = Number(this.state.distance);
         }
         
-        let coords = this.zipToCoords(zips_data, this.state.zip);
-        if(coords) {
+        if(this.state.zip != null) {
+            let coords = this.zipToCoords(zips_data, this.state.zip);
+            if(coords) {
+                
+                options["lon"] = coords[1];
+                options["lat"] = coords[0];
+                
+                this.props.fetchData(options);
+            } else {
+                this.setState({zip_error: true});
+            }
             
-            options["lon"] = coords[1];
-            options["lat"] = coords[0];
-            
-            this.props.fetchData(options);
         } else {
             this.setState({zip_error: true});
         }
+        
         event.preventDefault();
     }
     
@@ -103,7 +109,7 @@ class SearchBar extends Component {
                         <div className= "input-wrapper zip-wrapper">
                             <label className= "search-label zip-label" htmlFor="zip">Search Near:</label>
                             <br/>
-                            <input type="number" id="zip" className={`input-text ${this.state.zip_error ? 'zip-red' : ''}`} name="zip" value={this.state.zip} onChange={this.handleInput} placeholder="5 digit zip" required />
+                            <input type="number" id="zip" className={`input-text ${this.state.zip_error ? 'zip-red' : ''}`} name="zip" value={this.state.zip} onChange={this.handleInput} placeholder="5 digit zip" />
                         </div>
                         <div className= "input-wrapper distance-wrapper">
                             <label className= "search-label distance-label" htmlFor="distance">Within:</label>
