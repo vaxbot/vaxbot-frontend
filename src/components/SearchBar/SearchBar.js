@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "./SearchBar.css";
 
-const zips = require("../../modules/mo_zipcodes.json");
+//~ const zips = require("../../modules/mo_zipcodes.json");
 
 class SearchBar extends Component {
     constructor(props) {
@@ -20,21 +20,32 @@ class SearchBar extends Component {
     
         return(
             <form className= "search-bar">
-                <div className= "search-inputs-wrapper">
-                    <div className= "zip-wrapper">
-                        <label className= "zip-label" htmlFor="zip">Search Near:</label>
-                        <input type="text" id="zip" name="zip" placeholder="5 digit zipcode" />
+                <div className= "search-inputs">
+                    <div className= "text-inputs">
+                        <div className= "input wrapper zip-wrapper">
+                            <label className= "search-label zip-label" htmlFor="zip">Search Near:</label>
+                            <br/>
+                            <input type="text" id="zip" className="input-text" name="zip" placeholder="5 digit zip" />
+                        </div>
+                        <div className= "input-wrapper distance-wrapper">
+                            <label className= "search-label distance-label" htmlFor="distance">Within:</label>
+                            <br />
+                            <select type="" id="distance" name="distance" defaultValue="" className="input-text">
+                                <option value="5">5 miles</option>
+                                <option value="10">10 miles</option>
+                                <option value="25">25 miles</option>
+                                <option value="50">50 miles</option>
+                                <option value="">Any Distance</option>
+                            </select>
+                        </div>
                     </div>
-                    <div className= "distance-wrapper">
-                        <label className= "distance-label" htmlFor="distance">Within:</label>
-                        <select type="" id="distance" name="distance" defaultValue="">
-                            <option value="5">5 miles</option>
-                            <option value="10">10 miles</option>
-                            <option value="25">25 miles</option>
-                            <option value="50">50 miles</option>
-                            <option value="">Any Distance</option>
-                        </select>
+                    <div className= "no-vaccine-checkbox">
+                        <input type="checkbox" id="no-vaccine" value="no-vaccine"/>
+                        <label htmlFor="no-vaccine" className="no-vaccine-label input-text">Show results with no vaccine</label>
                     </div>
+                </div>
+                <div className="submit-wrapper">
+                    <input id="search-btn" type="submit" value= "SEARCH"/>
                 </div>
             </form>
         
