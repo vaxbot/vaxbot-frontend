@@ -22,7 +22,7 @@ class SearchBar extends Component {
             <form className= "search-bar">
                 <div className= "search-inputs">
                     <div className= "text-inputs">
-                        <div className= "input wrapper zip-wrapper">
+                        <div className= "input-wrapper zip-wrapper">
                             <label className= "search-label zip-label" htmlFor="zip">Search Near:</label>
                             <br/>
                             <input type="text" id="zip" className="input-text" name="zip" placeholder="5 digit zip" />
@@ -41,7 +41,7 @@ class SearchBar extends Component {
                     </div>
                     <div className= "no-vaccine-checkbox">
                         <input type="checkbox" id="no-vaccine" value="no-vaccine"/>
-                        <label htmlFor="no-vaccine" className="no-vaccine-label input-text">Show results with no vaccine</label>
+                        <label htmlFor="no-vaccine" className="no-vaccine-label">Show results with no vaccine</label>
                     </div>
                 </div>
                 <div className="submit-wrapper">
