@@ -23,6 +23,11 @@
     text-align: center;
 }
 
+.meta-state {
+    font-weight: bold;
+    font-size: 1em;
+}
+
 .meta-container {
     display: grid;
 /*

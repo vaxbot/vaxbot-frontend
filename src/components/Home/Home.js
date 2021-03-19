@@ -17,6 +17,8 @@ class Home extends Component {
             providers_with_vaccine: 0,
             last_scan: null,
             providers: [],
+            meta_loading: false,
+            meta_error: false,
             api_error: false,
             show_unavailable: false,
             loading: false,
@@ -29,6 +31,8 @@ class Home extends Component {
     }
     
     async fetchMeta() {
+        this.setState({meta_loading: true});
+        
         await fetch("http://localhost:3300/v1/providers/metadata")
             .then(response => {
                 if(response.status < 200 || response.status > 299) {
@@ -38,11 +42,18 @@ class Home extends Component {
                 }
             })
             .then(json => this.setState({
+                meta_loading: false,
                 providers_scanned: json.providers_scanned,
                 providers_with_vaccine: json.providers_with_vaccine,
                 last_scan: json.last_scan,
             }))
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err);
+                this.setState({
+                    meta_loading: false,
+                    meta_error: true
+                });
+            })
     }
     
     async fetchData(options = null) {
@@ -60,11 +71,24 @@ class Home extends Component {
       this.setState({loading: true});
       
       await fetch(base_url + query)
-        .then(response => response.json())
+        .then(response => {
+            if(response.status < 200 || response.status > 299) {
+                throw new Error(`${response.status}: ${response.statusText}`);
+            } else {
+                return response.json();
+            }
+        })
         .then(json => this.setState({
             providers: json,
             loading: false
         }))
+        .catch(err => {
+            this.setState({
+                api_error: true,
+                loading: false
+            });
+            console.log(err);
+        })
       //~ this.setState({providers: data})
     }
     
@@ -140,6 +164,22 @@ class Home extends Component {
             fetchData = { this.fetchData }
         />
         
+        let meta_data;
+        
+        if(this.state.meta_error) {                          // fetch returned an error
+            meta_data = api_error;         
+        } else if(this.state.meta_loading) {                     // no error and we're loading data
+            meta_data = loading_indicator; 
+        } else {
+            meta_data = (
+              <div className= "meta-data">
+                <div className="meta-item" ><b>Last Scan:</b> { this.state.providers_scanned } providers { this.formattedTimeFromNow(new Date(this.state.last_scan)) } ago </div>
+                <div className="">{ this.state.providers_with_vaccine } with vaccines available</div>
+              </div>
+            )
+        }
+        
+        
         let search_results;
       
         if(this.state.api_error) {                          // fetch returned an error
@@ -179,8 +219,8 @@ class Home extends Component {
         <div id="home">
           <div id="providers-meta">
             <div className="meta-container">
-              <div className="meta-item" ><b>Last Scan:</b> { this.state.providers_scanned } providers { this.formattedTimeFromNow(new Date(this.state.last_scan)) } ago </div>
-              <div className="">{ this.state.providers_with_vaccine } with vaccines available</div>
+              <div className="meta-state">Missouri</div>
+              {meta_data}
             </div>
           </div>
           <div id="home-intro">
@@ -194,8 +234,8 @@ class Home extends Component {
           </div>
           <div id="home-update">
             <p>
-              <b>Update (3/12):</b> vaxbot is currently in beta mode! We are working hard to add new vaccine providers ASAP! Right now
-              our scans cover a limited range of locations in the St. Louis region.
+              <b>Update (3/22):</b> vaxbot is currently in beta mode! We are working hard to add new features and improvements ASAP! Right now
+              our scans cover hundreds of providers in Missouri several times a day.
             </p>
           </div>
           <div className= "search-bar-wrapper"> 

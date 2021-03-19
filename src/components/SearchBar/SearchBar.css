@@ -36,11 +36,28 @@
     font-size: 0.8em;
 }
 
+.zip-red {
+    border: 1px solid red;
+}
+.zip-error {
+    font-size: 0.6em;
+    color: red;
+}
+
 input, select {
     -ms-box-sizing:border-box;
     -moz-box-sizing:border-box;
     box-sizing:border-box;
     -webkit-box-sizing:border-box; 
+}
+
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 @media (min-width: 600px) {

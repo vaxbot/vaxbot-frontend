@@ -25,7 +25,7 @@ function About() {
       <h3>Who built this and why?</h3>
 
       <p>Vaxbot was built by Austin Carnahan. The original idea was inspired by Huge Ma, the creator of the NYC-based <a href="https://www.turbovax.info/" target="_blank" rel="noopener noreferrer" >TurboVax</a> We've borrowed a lot of ideas
-      and design from them, huge thanks! We've also learned a lot from Nick Muerdter's <a href="https://www.vaccinespotter.org/" target="_blank" rel="noopener noreferrer" >Vaccine Spotter</a> and their code has helped us vastly improve our pharmacy searches.</p>
+      and design from them, huge thanks! We've also learned a lot from Nick Muerdter's <a href="https://www.vaccinespotter.org/" target="_blank" rel="noopener noreferrer" >Vaccine Spotter</a> and their awesome API supports our pharmacy searches.</p>
 
 
       <p>Recently, Missouri has consistly ranked last in measures of percent of population vaccinated. We wanted to bring some of the most forward-thinking tools

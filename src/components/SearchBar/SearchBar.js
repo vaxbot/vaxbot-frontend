@@ -11,6 +11,7 @@ class SearchBar extends Component {
             distance: "any",
             zip: "",
             show_unavailable: false,
+            zip_error: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
@@ -58,12 +59,13 @@ class SearchBar extends Component {
         
         let coords = this.zipToCoords(zips_data, this.state.zip);
         if(coords) {
+            
             options["lon"] = coords[1];
             options["lat"] = coords[0];
             
             this.props.fetchData(options);
         } else {
-            alert("Unable to find zip code!");
+            this.setState({zip_error: true});
         }
         event.preventDefault();
     }
@@ -74,7 +76,10 @@ class SearchBar extends Component {
     }
     
     handleInput(event) {
-        this.setState({zip: event.target.value});
+        this.setState({
+            zip: event.target.value,
+            zip_error: false,
+        });
 
     }
     
@@ -84,7 +89,13 @@ class SearchBar extends Component {
     }
     
     render() {
+        let zipError = ""
     
+        if(this.state.zip_error){
+            zipError = (
+                <div className= "zip-error">Error: zip code not found!</div>
+            )
+        }
         return(
             <form className= "search-bar" onSubmit={this.handleSubmit}>
                 <div className= "search-inputs">
@@ -92,7 +103,7 @@ class SearchBar extends Component {
                         <div className= "input-wrapper zip-wrapper">
                             <label className= "search-label zip-label" htmlFor="zip">Search Near:</label>
                             <br/>
-                            <input type="number" id="zip" className="input-text" name="zip" value={this.state.zip} onChange={this.handleInput} placeholder="5 digit zip" required />
+                            <input type="number" id="zip" className={`input-text ${this.state.zip_error ? 'zip-red' : ''}`} name="zip" value={this.state.zip} onChange={this.handleInput} placeholder="5 digit zip" required />
                         </div>
                         <div className= "input-wrapper distance-wrapper">
                             <label className= "search-label distance-label" htmlFor="distance">Within:</label>
@@ -106,6 +117,7 @@ class SearchBar extends Component {
                             </select>
                         </div>
                     </div>
+                    {zipError}
                     <div className= "no-vaccine-checkbox">
                         <input type="checkbox" id="no-vaccine" checked={this.state.show_unavailable} onChange={this.handleCheckbox}/>
                         <label htmlFor="no-vaccine" className="no-vaccine-label">Show results with no availability</label>
