@@ -10,12 +10,14 @@ class Provider extends Component {
     *   city= { provider.city }
     *   state= { provider.state }
     *   zip = { provider.zip }
+    *   phone = { provider.phone || null }
     *   dates = { provider.dates }
     *   vaccine_tags = { provider.vaccine_tags }
     *   tags = { provider.tags }
     *   url = { provider.contact_url ? provider.contact_url : provider.source_url }
-    *   visible = { provider.vaccine_available || this.state.show_unavailable}
+    *   updated = { provider.source_updated ? provider.source_updated : provider.updatedAt }
     *   vaccine_available = { provider.vaccine_available }
+    *   formattedTimeFromNow = { this.formattedTimeFromNow }
     */
 
     constructor(props) {
@@ -43,20 +45,28 @@ class Provider extends Component {
         
         // generate available/unavailable link button
         let link_button;
-        if(this.props.vaccine_available) {
-            link_button = (
-                <div className="provider-item button-link available">
-                    <a target="_blank" rel="noopener noreferrer" href={ this.props.url }>
-                        <span className="button-link-label available">GO TO SITE</span>
-                    </a>
-                </div>
-            )
-        } else if(!this.props.vaccine_available) {
+        if(this.props.url){
+            if(this.props.vaccine_available) {
+                link_button = (
+                    <div className="provider-item button-link available">
+                        <a target="_blank" rel="noopener noreferrer" href={ this.props.url }>
+                            <span className="button-link-label available">GO TO SITE</span>
+                        </a>
+                    </div>
+                )
+            } else if(!this.props.vaccine_available) {
+                link_button = (
+                    <div className="provider-item button-link unavailable">
+                        <a target="_blank" rel="noopener noreferrer" href={ this.props.url }>
+                            <span className="button-link-label unavailable">NOT AVAILABLE</span>
+                        </a>
+                    </div>
+                )
+            }
+        } else {
             link_button = (
                 <div className="provider-item button-link unavailable">
-                    <a target="_blank" rel="noopener noreferrer" href={ this.props.url }>
-                        <span className="button-link-label unavailable">NOT AVAILABLE</span>
-                    </a>
+                    <span className="button-link-label unavailable">NO LINK PROVIDED</span>
                 </div>
             )
         }
@@ -90,16 +100,18 @@ class Provider extends Component {
         }
         
         return(
-            <div id="123" className={ this.props.visible ? "provider provider-container" : "provider provider-container hidden"}>
+            <div id={ this.props.id } className="provider provider-container">
                 <div className="provider-info-wrapper">
                     <div className="provider-item name">{this.props.name}</div>
                     <div className="provider-item address1">{ this.props.address1 }</div>
-                    <div className="provider-item city-state">{ this.props.city }, { this.props.state }</div>
+                    <div className="provider-item city-state">{ this.props.city }, { this.props.state } { this.props.zip }</div>
+                    <div className="provider-item phone">{ this.props.phone ? this.props.phone : "" }</div>
                     <div className="provider-item tags-container">{ tags }</div>
                     <div className="provider-item dates-available">{ dates } </div>
                 </div>
                 <div className="provider-button-wrapper">
                     { link_button }
+                    <div className="provider-item last-updated">Updated { this.props.formattedTimeFromNow(new Date(this.props.updated)) } ago</div>
                 </div>
             </div>
         
