@@ -18,6 +18,17 @@
     color: white;
 }
 
+.image-source-link {
+    margin-top: 20px;
+    font-size: 0.1em;
+    color: var(--black-coral);
+}
+
+.image-source-link a {
+    font-size: 0.1em;
+    color: var(--black-coral);
+}
+
 
 #github-icon {
     margin-right: 5px;

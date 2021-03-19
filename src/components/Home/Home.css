@@ -43,7 +43,12 @@
     text-align: center;
 }
 
+.api-error-wrapper {
+    text-align: center;
+}
+
 .api-error {
+    color: red;
     text-align: center;
 }
 

@@ -22,6 +22,9 @@ function Footer() {
             <FontAwesomeIcon id="email-icon" icon={["fa", "envelope"]}/>
             <span>vaxbotstl@gmail.com</span>
           </li>
+          <li className="image-source-link">
+            <a target="_blank" href="https://icons8.com/icons/set/broken-robot">Broken Robot icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+          </li>
         </ul>
       </footer>
     </div>

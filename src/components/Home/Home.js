@@ -156,7 +156,10 @@ class Home extends Component {
         )
         
         let api_error = (
-            <div className = "api-error">Oh no! Our robot appears to be broken, please check back later.</div>
+            <div className="api-error-wrapper">
+                <img src="/images/broken-robot-100.png" id="broken-robot" alt="broken robot" />
+                <div className = "api-error">Oh no! Our robot appears to be broken, please check back later.</div>
+            </div>
         )
       
         
