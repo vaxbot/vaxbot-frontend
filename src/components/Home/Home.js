@@ -33,7 +33,7 @@ class Home extends Component {
     async fetchMeta() {
         this.setState({meta_loading: true});
         
-        await fetch("http://localhost:3300/v1/providers/metadata")
+        await fetch("http://api.vaxbot.org/v1/providers/metadata")
             .then(response => {
                 if(response.status < 200 || response.status > 299) {
                     throw new Error(`${response.status}: ${response.statusText}`);
@@ -66,7 +66,7 @@ class Home extends Component {
           query = query.replace(/&$/ig, "");
           console.log(query);
       }
-      const base_url= "http://localhost:3300/v1/providers/"
+      const base_url= "http://api.vaxbot.org/v1/providers/"
       
       this.setState({loading: true});
       
