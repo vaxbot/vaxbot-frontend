@@ -33,7 +33,7 @@ class Home extends Component {
     async fetchMeta() {
         this.setState({meta_loading: true});
         
-        await fetch("https://api.vaxbot.org/v1/providers/metadata")
+        await fetch("https://sleepy-temple-92373.herokuapp.com/v1/providers/metadata")
             .then(response => {
                 if(response.status < 200 || response.status > 299) {
                     throw new Error(`${response.status}: ${response.statusText}`);
@@ -66,7 +66,7 @@ class Home extends Component {
           query = query.replace(/&$/ig, "");
           console.log(query);
       }
-      const base_url= "https://api.vaxbot.org/v1/providers/"
+      const base_url= "https://sleepy-temple-92373.herokuapp.com/v1/providers/"
       
       this.setState({loading: true});
       
