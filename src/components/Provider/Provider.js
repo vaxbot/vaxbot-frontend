@@ -58,7 +58,7 @@ class Provider extends Component {
             if(this.props.vaccine_available) {
                 link_button = (
                     <div className="provider-item button-link available">
-                        <a target="_blank" rel="noopener noreferrer" href={ this.props.url }>
+                        <a target="_blank" className="provider-link" rel="noopener noreferrer" href={ this.props.url }>
                             <span className="button-link-label available">GO TO SITE</span>
                         </a>
                     </div>
