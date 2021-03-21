@@ -110,6 +110,7 @@ class SearchBar extends Component {
                             <label className= "search-label zip-label" htmlFor="zip">Search Near:</label>
                             <br/>
                             <input type="number" id="zip" className={`input-text ${this.state.zip_error ? 'zip-red' : ''}`} name="zip" value={this.state.zip} onChange={this.handleInput} placeholder="5 digit zip" />
+                            {zipError}
                         </div>
                         <div className= "input-wrapper distance-wrapper">
                             <label className= "search-label distance-label" htmlFor="distance">Within:</label>
@@ -123,7 +124,6 @@ class SearchBar extends Component {
                             </select>
                         </div>
                     </div>
-                    {zipError}
                     <div className= "no-vaccine-checkbox">
                         <input type="checkbox" id="no-vaccine" checked={this.state.show_unavailable} onChange={this.handleCheckbox}/>
                         <label htmlFor="no-vaccine" className="no-vaccine-label">Show results with no availability</label>
