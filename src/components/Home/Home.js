@@ -130,11 +130,22 @@ class Home extends Component {
     
     render() {
       
-        const twitter_link = (
-            <a className="twitter-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/vaxbot_stl">
-                <FontAwesomeIcon id="twitter-icon" icon={["fab", "twitter"]}/>
-                <span className="twitter-link-text">@vaxbot_stl</span>
-            </a>
+        const stl_twitter_link = (
+            <span className="twitter-link-wrapper">
+                <a className="twitter-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/vaxbot_stl">
+                    <FontAwesomeIcon id="twitter-icon" icon={["fab", "twitter"]}/>
+                    <span className="twitter-link-text">@vaxbot_stl</span>
+                </a>
+            </span>
+        )
+        
+        const kc_twitter_link = (
+            <span className="twitter-link-wrapper">
+                <a className="twitter-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/vaxbot_kc">
+                    <FontAwesomeIcon id="twitter-icon" icon={["fab", "twitter"]}/>
+                    <span className="twitter-link-text">@vaxbot_kc</span>
+                </a>
+            </span>
         )
 
         let bmc_link = (
@@ -231,15 +242,16 @@ class Home extends Component {
             <span>Vaxbot scans pharmacies as well as state and national resources to help you find available COVID-19 vaccinations in your area.</span>
             <br />
             <br/>
-            <span>For real-time notifications of new availablity, follow us on Twitter { twitter_link }.</span>
-            <br/>
-            <br/>
+            <span>For notifications of new availablity near you, follow us on Twitter! We automatically post updates as soon as we find them.</span>
+            <ul className= "twitter-links">
+                <li>St. Louis: {stl_twitter_link}</li>
+                <li>Kansas City: {kc_twitter_link}</li>
+            </ul>
             <span>Help vaxbot expand! Support us at { bmc_link }</span>
           </div>
           <div id="home-update">
             <p>
-              <b>Update (3/22):</b> vaxbot is currently in beta mode! We are working hard to add new features and improvements ASAP! Right now
-              our scans cover hundreds of providers in Missouri several times a day.
+              <b>Update (3/22):</b> vaxbot is currently in beta mode! We are working hard to add new features and improvements ASAP!
             </p>
           </div>
           <div className= "search-bar-wrapper"> 

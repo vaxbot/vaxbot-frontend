@@ -120,6 +120,7 @@ class SearchBar extends Component {
                                 <option value="10">10 miles</option>
                                 <option value="25">25 miles</option>
                                 <option value="50">50 miles</option>
+                                <option value="100">100 miles</option>
                                 <option value="any">Any Dist.</option>
                             </select>
                         </div>

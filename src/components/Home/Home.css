@@ -3,7 +3,8 @@
 }
 
 #home-intro {
-    padding: 40px 0px 40px
+    padding: 40px 0px 40px;
+    text-align: center;
 }
 
 #home-update {
@@ -56,9 +57,29 @@
 
 }
 
+.twitter-link-wrapper {
+    white-space: nowrap;
+}
+
 #bmc-logo {
     height: 30px;
     margin-bottom: -6px;
+}
+
+.twitter-links {
+    text-align: left;
+    font-size: 0.9em;
+}
+
+.twitter-links li {
+    margin-bottom: 12px;
+}
+
+@media (min-width: 600px) {
+    #home-intro {
+        text-align: left;
+    }
+    
 }
 
 
